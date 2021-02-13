@@ -16,8 +16,15 @@ if (process.env.NODE_ENV === "production") {
 
 
 //Mongo connect
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/googlebooks',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
 // Link API Routes here
 app.use(routes)
